@@ -1,0 +1,49 @@
+1.Query for creating table Weather
+
+CREATE TABLE Weather (
+    SID VARCHAR(100),
+    DeviceID VARCHAR(200),
+    ObservationTimestamp TIMESTAMP,
+    "LocalTimestamp" TIMESTAMP,
+    AirTemperature FLOAT, 
+    BarometricPressure FLOAT,
+    RelativeHumidity FLOAT
+);
+
+
+2.Query for copy the data file from the bucket
+
+COPY Weather 
+FROM 's3://aleks1515/Weather.csv'
+CREDENTIALS 'aws_iam_role=arn:aws:iam::249570927592:role/myRedshiftRole'
+DELIMITER ',' 
+REGION 'us-east-1'
+IGNOREHEADER 1 
+DATEFORMAT 'auto'
+TIMEFORMAT 'auto';
+
+3.Simple query
+
+SELECT DeviceID, COUNT(*) AS record_count
+FROM weather
+GROUP BY DeviceID
+ORDER BY record_count DESC;
+
+3.1.Complex query
+SELECT 
+DATE(ObservationTimestamp) AS ObservationDate,
+MIN(AirTemperature) AS MinTemperature,
+MAX(AirTemperature) AS MaxTemperature,
+(MAX(AirTemperature) - MIN(AirTemperature)) AS TemperatureRange
+FROM weather
+GROUP BY ObservationDate
+ORDER BY ObservationDate;
+
+3.2.Complex query 
+SELECT 
+DATE(ObservationTimestamp) AS ObservationDate,
+AVG(RelativeHumidity) AS AverageHumidity
+FROM weather
+WHERE DATE(ObservationTimestamp) BETWEEN '2024-09-01' AND '2024-09-30'
+GROUP BY ObservationDate
+ORDER BY ObservationDate;
