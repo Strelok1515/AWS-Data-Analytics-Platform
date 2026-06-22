@@ -2,7 +2,7 @@
 
 # 
 
-# 1.Overview
+## 1.Overview
 
 # 
 
@@ -14,7 +14,7 @@
 
 # 
 
-# 2.Technologies
+## 2.Technologies
 
 # 
 
@@ -34,7 +34,7 @@
 
 # 
 
-# 3.Architecture
+## 3.Architecture
 
 # 
 
@@ -42,7 +42,7 @@
 
 # 
 
-# 4.Key Features
+## 4.Key Features
 
 # 
 
@@ -62,7 +62,7 @@
 
 # 
 
-# 5.Project Outcomes
+## 5.Project Outcomes
 
 # 
 
@@ -76,7 +76,7 @@
 
 # 
 
-# 6.Skills Demonstrated
+## 6.Skills Demonstrated
 
 # 
 
